@@ -1,6 +1,8 @@
 import com.microsoft.playwright.*;
 import java.nio.file.Paths;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 public class App {
     public static void main(String[] args) {
         try (Playwright playwright = Playwright.create()) {

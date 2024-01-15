@@ -1,5 +1,4 @@
 import com.microsoft.playwright.*;
-
 //import java.nio.file.Paths;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;

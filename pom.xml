@@ -15,18 +15,12 @@
     </properties>
 
     <dependencies>
+
         <!-- https://mvnrepository.com/artifact/com.microsoft.playwright/playwright -->
         <dependency>
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
             <version>1.40.0</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.16.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
