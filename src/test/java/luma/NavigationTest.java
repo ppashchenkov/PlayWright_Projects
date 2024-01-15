@@ -6,12 +6,11 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.AriaRole;
 import luma.runner.BaseTest;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
-public class NavigationTest {
+public class NavigationTest extends BaseTest {
 //    final String baseURL = "https://magento.softwaretestingboard.com/";
     final String baseURL = "https://naveenautomationlabs.com/opencart/";
     Playwright playwright = Playwright.create();
@@ -26,11 +25,12 @@ public class NavigationTest {
     }
 
     @Test
-    public void testFor() {
+    public void testTabletsMenu () {
         page.navigate(baseURL);
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
                 .setName("Tablets").setExact(true)).click();
 
-        assertThat(page).hasURL("https://naveenautomationlabs.com/opencart/index.php?route=product/category&path=57");
+        assertThat(page)
+                .hasURL("https://naveenautomationlabs.com/opencart/index.php?route=product/category&path=57");
     }
 }
