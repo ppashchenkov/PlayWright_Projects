@@ -1,22 +1,26 @@
 package luma;
 
+import com.microsoft.playwright.Browser;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Playwright;
 import luma.runner.BaseTest;
-//import model.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-//import utils.TestData;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class NavigationTest extends BaseTest {
 
-//    @Test
-//    public void testForHimMenuNavigatesToForHimPage() {
-//        page.navigate(baseUrl);
-//
-//        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("FOR HIM")).click();
-//
-//        assertThat(page).hasURL("http://localhost:3000/forHim");
-//
-//    }
+    String baseURL = "https://magento.softwaretestingboard.com/";
+
+    public void baseUrlTest() {
+        try (Playwright playwright = Playwright.create())
+        {
+            Browser browser = playwright.chromium().launch();
+            Page page = browser.newPage();
+            page.navigate(baseURL);
+            assertThat(page).hasURL(baseURL);
+        }
+    }
+
 }
