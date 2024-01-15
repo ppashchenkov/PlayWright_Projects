@@ -14,13 +14,11 @@ public class NavigationTest extends BaseTest {
     String baseURL = "https://magento.softwaretestingboard.com/";
 
     public void baseUrlTest() {
-        try (Playwright playwright = Playwright.create())
-        {
-            Browser browser = playwright.chromium().launch();
-            Page page = browser.newPage();
-            page.navigate(baseURL);
-            assertThat(page).hasURL(baseURL);
-        }
-    }
 
+        Playwright playwright = Playwright.create();
+        Browser browser = playwright.chromium().launch();
+        Page page = browser.newPage();
+        page.navigate(baseURL);
+        assertThat(page).hasURL(baseURL);
+    }
 }

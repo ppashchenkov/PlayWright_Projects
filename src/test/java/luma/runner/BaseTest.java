@@ -7,10 +7,10 @@ import org.testng.annotations.*;
 
 public abstract class BaseTest {
 
-    private Playwright playwright;
-    private Browser browser;
-    private BrowserContext context;
-    private Page page;
-
+//    private Playwright playwright;
+//    private Browser browser;
+//    private BrowserContext context;
+//    private Page page;
+//
 
 }
