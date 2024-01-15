@@ -10,4 +10,13 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 public class NavigationTest extends BaseTest {
 
+//    @Test
+//    public void testForHimMenuNavigatesToForHimPage() {
+//        page.navigate(baseUrl);
+//
+//        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("FOR HIM")).click();
+//
+//        assertThat(page).hasURL("http://localhost:3000/forHim");
+//
+//    }
 }
