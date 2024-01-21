@@ -9,28 +9,23 @@ import luma.runner.BaseTest;
 import org.testng.annotations.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static utils.TestData.*;
 
 public class NavigationTest extends BaseTest {
-//    final String baseURL = "https://magento.softwaretestingboard.com/";
-    final String baseURL = "https://naveenautomationlabs.com/opencart/";
-    Playwright playwright = Playwright.create();
-    Browser browser = playwright.chromium().launch(new BrowserType
-            .LaunchOptions().setHeadless(true).setSlowMo(100));
-    Page page = browser.newPage();
 
     @Test
     public void testBaseUrlLanding() {
-        page.navigate(baseURL);
-        assertThat(page).hasURL(baseURL);
+        getPage().navigate(BASE_URL);
+        assertThat(getPage()).hasURL(BASE_URL + HOME_END_POINT);
     }
 
     @Test
     public void testTabletsMenu () {
-        page.navigate(baseURL);
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
-                .setName("Tablets").setExact(true)).click();
+        getPage().navigate(BASE_URL);
+        getPage().getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
+                .setName(TABLETS_MENU).setExact(true)).click();
 
-        assertThat(page)
-                .hasURL("https://naveenautomationlabs.com/opencart/index.php?route=product/category&path=57");
+        assertThat(getPage())
+                .hasURL(BASE_URL + TABLETS_MENU_END_POINT);
     }
 }
