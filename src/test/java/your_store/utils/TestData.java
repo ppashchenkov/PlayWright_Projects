@@ -1,4 +1,4 @@
-package utils;
+package your_store.utils;
 
 public final class TestData {
 //    public static final String BASE_URL = "https://magento.softwaretestingboard.com/";

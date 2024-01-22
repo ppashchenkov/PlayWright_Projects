@@ -1,15 +1,12 @@
-package luma;
+package your_store;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.AriaRole;
-import luma.runner.BaseTest;
+import your_store.runner.BaseTest;
 import org.testng.annotations.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static utils.TestData.*;
+import static your_store.utils.TestData.*;
 
 public class NavigationTest extends BaseTest {
 

@@ -1,4 +1,4 @@
-package luma.runner;
+package your_store.runner;
 
 import com.microsoft.playwright.*;
 import org.testng.annotations.*;
