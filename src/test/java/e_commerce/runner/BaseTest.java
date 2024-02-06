@@ -1,10 +1,10 @@
-package your_store.runner;
+package e_commerce.runner;
 
 import com.microsoft.playwright.*;
 import org.testng.annotations.*;
 
-import static your_store.utils.TestData.BASE_URL;
-import static your_store.utils.TestData.HOME_END_POINT;
+import static e_commerce.utils.TestData.BASE_URL;
+import static e_commerce.utils.TestData.HOME_END_POINT;
 
 public abstract class BaseTest {
 
@@ -17,7 +17,7 @@ public abstract class BaseTest {
     @BeforeSuite
     protected void checkIfPlaywrightCreatedAndBrowserLaunched() {
         if (playwright != null) {
-            System.out.println("Playwright created");
+            System.out.println("Playwright created.");
         } else {
             System.out.println("FATAL. Playwright is NOT created.");
             System.exit(1);
