@@ -12,5 +12,7 @@ public final class TestData {
     public static final String PHONES_AND_PDA_MENU = "Phones & PDAs";
     public static final String CAMERAS_END_POINT = "/index.php?route=product/category&path=33";
     public static final String CAMERAS_MENU = "Cameras";
+    public static final String MP3PLAYERS_END_POINT = "/index.php?route=product/category&path=34";
+    public static final String MP3PLAYERS_MENU = "Show All MP3 Players";
 
 }
