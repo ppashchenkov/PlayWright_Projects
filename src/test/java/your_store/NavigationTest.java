@@ -51,4 +51,14 @@ public class NavigationTest extends BaseTest {
         }
     }
 
+    @Test
+    public void testCamerasMenu() {
+        if (getIsOnHomePage()) {
+            getPage().getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
+                    .setName(CAMERAS_MENU).setExact(true)).click();
+
+            assertThat(getPage())
+                    .hasURL(BASE_URL + CAMERAS_END_POINT);
+        }
+    }
 }
