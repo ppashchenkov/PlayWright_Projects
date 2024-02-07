@@ -26,7 +26,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-        permissions: write-all
     - name: Run the Maven verify phase
       run: mvn --batch-mode verify
       # run: mvn --batch-mode --update-snapshots verify
