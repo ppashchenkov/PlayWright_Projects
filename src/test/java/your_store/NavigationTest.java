@@ -50,4 +50,5 @@ public class NavigationTest extends BaseTest {
                     .hasURL(BASE_URL + PHONES_AND_PDA_END_POINT);
         }
     }
+
 }
