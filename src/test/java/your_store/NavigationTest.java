@@ -18,7 +18,7 @@ public class NavigationTest extends BaseTest {
     }
 
     @Test
-    public void testTabletsMenu () {
+    public void testTabletsMenu() {
 
         if (getIsOnHomePage()) {
             getPage().getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
@@ -28,4 +28,16 @@ public class NavigationTest extends BaseTest {
                     .hasURL(BASE_URL + TABLETS_MENU_END_POINT);
         }
     }
+
+    @Test
+    public void testSoftwareMenu() {
+        if (getIsOnHomePage()) {
+            getPage().getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
+                    .setName(SOFTWARE_MENU).setExact(true)).click();
+
+            assertThat(getPage())
+                    .hasURL(BASE_URL + SOFTWARE_MENU_AND_POINT);
+        }
+    }
+
 }
