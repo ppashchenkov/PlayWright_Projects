@@ -39,4 +39,5 @@ public class NavigationTest extends BaseTest {
                     .hasURL(BASE_URL + SOFTWARE_MENU_AND_POINT);
         }
     }
+
 }
