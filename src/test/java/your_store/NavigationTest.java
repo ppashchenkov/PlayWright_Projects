@@ -61,4 +61,5 @@ public class NavigationTest extends BaseTest {
                     .hasURL(BASE_URL + CAMERAS_END_POINT);
         }
     }
+
 }
