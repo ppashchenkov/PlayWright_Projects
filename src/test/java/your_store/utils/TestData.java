@@ -10,5 +10,4 @@ public final class TestData {
     public static final String SOFTWARE_MENU = "Software";
     public static final String PHONES_AND_PDA_END_POINT = "/index.php?route=product/category&path=24";
     public static final String PHONES_AND_PDA_MENU = "Phones & PDAs";
-
 }
