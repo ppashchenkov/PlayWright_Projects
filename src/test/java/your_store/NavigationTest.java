@@ -40,4 +40,14 @@ public class NavigationTest extends BaseTest {
         }
     }
 
+    @Test
+    public void testPhonesAndPdaMenu() {
+        if (getIsOnHomePage()) {
+            getPage().getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
+                    .setName(PHONES_AND_PDA_MENU).setExact(true)).click();
+
+            assertThat(getPage())
+                    .hasURL(BASE_URL + PHONES_AND_PDA_END_POINT);
+        }
+    }
 }
