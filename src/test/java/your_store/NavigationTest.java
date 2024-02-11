@@ -2,6 +2,7 @@ package your_store;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import org.testng.Assert;
 import your_store.runner.BaseTest;
 import org.testng.annotations.Test;
 
@@ -26,6 +27,8 @@ public class NavigationTest extends BaseTest {
 
             assertThat(getPage())
                     .hasURL(BASE_URL + TABLETS_MENU_END_POINT);
+        } else {
+            Assert.fail();
         }
     }
 
