@@ -1,7 +1,9 @@
 package your_store.runner;
 
 import com.microsoft.playwright.*;
+import org.testng.Reporter;
 import org.testng.annotations.*;
+import your_store.utils.LoggerUtils;
 
 import static your_store.utils.TestData.BASE_URL;
 import static your_store.utils.TestData.HOME_END_POINT;
@@ -17,16 +19,19 @@ public abstract class BaseTest {
     @BeforeSuite
     protected void checkIfPlaywrightCreatedAndBrowserLaunched() {
         if (playwright != null) {
-            System.out.println("Playwright created");
+            LoggerUtils.logInfo("Playwright created");
+//            Reporter.log("-------Playwright created", true);
+            LoggerUtils.logInfo("Playwright created");
         } else {
-            System.out.println("FATAL. Playwright is NOT created.");
+//            System.out.println("FATAL. Playwright is NOT created.");
+            LoggerUtils.logFatal("FATAL. Playwright is NOT created.");
             System.exit(1);
         }
 
         if (browser.isConnected()) {
-            System.out.println("Browser " + browser.browserType().name() + " is connected.");
+            LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
         } else {
-            System.out.println("FATAL. Browser is NOT connected.");
+            LoggerUtils.logFatal("FATAL. Browser is NOT connected.");
             System.exit(1);
         }
     }
@@ -34,17 +39,17 @@ public abstract class BaseTest {
     @BeforeMethod
     protected void createContextAndPage() {
         context = browser.newContext();
-        System.out.println("Context created.");
+        LoggerUtils.logInfo("Context created.");
 
         page = context.newPage();
-        System.out.println("Page created.");
+        LoggerUtils.logInfo("Page created.");
 
-        System.out.println("Start test");
+        LoggerUtils.logSuccess("Start test");
         getPage().navigate(BASE_URL);
         if (isOnHomePage()) {
-            System.out.println("Base url opened");
+            LoggerUtils.logInfo("Base url opened");
         } else {
-            System.out.println("ERROR: Base url was NOT opened.");
+            LoggerUtils.logError("ERROR: Base url was NOT opened.");
         }
     }
 
@@ -52,11 +57,11 @@ public abstract class BaseTest {
     protected void closeContext() {
         if (page != null) {
             page.close();
-            System.out.println("Page closed.");
+            LoggerUtils.logInfo("Page closed.");
         }
         if (context != null) {
             context.close();
-            System.out.println("Context closed.");
+            LoggerUtils.logInfo("Context closed.");
         }
     }
 
@@ -64,11 +69,11 @@ public abstract class BaseTest {
     protected void closeBrowserAndPlaywright() {
         if (browser != null){
             browser.close();
-            System.out.println("Browser " + browser.browserType().name() + " is closed.");
+            LoggerUtils.logSuccess("Browser " + browser.browserType().name() + " is closed.");
         }
         if (playwright != null) {
             playwright.close();
-            System.out.println("Playwright closed.");
+            LoggerUtils.logInfo("Playwright closed.");
         }
     }
 
