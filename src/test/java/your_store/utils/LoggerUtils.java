@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import your_store.runner.BaseTest;
 
-public class LoggerUtils {
+public final class LoggerUtils {
 
     private static final String ERROR = "❌\n";
     private static final String SUCCESS = "✅";

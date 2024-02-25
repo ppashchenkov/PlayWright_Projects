@@ -3,6 +3,7 @@ package your_store.runner;
 import com.microsoft.playwright.*;
 import org.testng.Reporter;
 import org.testng.annotations.*;
+import your_store.utils.BrowserManager;
 import your_store.utils.LoggerUtils;
 
 import static your_store.utils.TestData.BASE_URL;
@@ -11,8 +12,7 @@ import static your_store.utils.TestData.HOME_END_POINT;
 public abstract class BaseTest {
 
     private final Playwright playwright = Playwright.create();
-    private final Browser browser = playwright.chromium().launch(new BrowserType
-            .LaunchOptions().setHeadless(true).setSlowMo(100));
+    private final Browser browser = BrowserManager.createBrowser(playwright, "chromium", true, 1500);
     private BrowserContext context;
     private Page page;
 
