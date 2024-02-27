@@ -1,7 +1,6 @@
 package your_store.runner;
 
 import com.microsoft.playwright.*;
-import org.testng.Reporter;
 import org.testng.annotations.*;
 import your_store.utils.BrowserManager;
 import your_store.utils.LoggerUtils;
@@ -20,10 +19,7 @@ public abstract class BaseTest {
     protected void checkIfPlaywrightCreatedAndBrowserLaunched() {
         if (playwright != null) {
             LoggerUtils.logInfo("Playwright created");
-//            Reporter.log("-------Playwright created", true);
-            LoggerUtils.logInfo("Playwright created");
         } else {
-//            System.out.println("FATAL. Playwright is NOT created.");
             LoggerUtils.logFatal("FATAL. Playwright is NOT created.");
             System.exit(1);
         }
