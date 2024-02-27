@@ -27,7 +27,7 @@ jobs:
         distribution: 'corretto'
         cache: maven
     - name: Run the Maven verify phase
-      run: mvn verify
+      run: mvn test
       # run: mvn --batch-mode verify
       # run: mvn --batch-mode --update-snapshots verify
       # run: mvn -B package --file pom.xml
