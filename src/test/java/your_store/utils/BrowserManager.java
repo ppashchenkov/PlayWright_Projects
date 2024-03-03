@@ -30,8 +30,8 @@ public final class BrowserManager {
                 LoggerUtils.logError("Error: " + browserName + " is NOT match any options. Cromium() launched.");
                 return playwright.chromium()
                         .launch(new BrowserType.LaunchOptions()
-                                .setHeadless(isHeadLess)
-                                .setSlowMo(slowMo));
+                                .setHeadless(true)
+                                .setSlowMo(0));
             }
         }
     }
