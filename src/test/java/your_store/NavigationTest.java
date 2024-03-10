@@ -65,6 +65,12 @@ public class NavigationTest extends BaseTest {
         }
     }
 
+    @Test
+    public void testTrue() {
+
+        Assert.assertTrue(true);
+    }
+
 //    @Test
 //    public void testMp3PlayersMenu() {
 //        if (getIsOnHomePage()) {
