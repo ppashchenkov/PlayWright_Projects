@@ -5,6 +5,7 @@ import org.testng.annotations.*;
 import your_store.utils.BrowserManager;
 import your_store.utils.ConfigProperties;
 import your_store.utils.LoggerUtils;
+import your_store.utils.ReportUtils;
 
 import static your_store.utils.TestData.BASE_URL;
 import static your_store.utils.TestData.HOME_END_POINT;
@@ -18,7 +19,7 @@ public abstract class BaseTest {
 
     @BeforeSuite
     protected void checkIfPlaywrightCreatedAndBrowserLaunched() {
-        LoggerUtils.logInfo("\u001B[33m" + "********************* START SUITE TEST *********************" + "\u001B[0m");
+        ReportUtils.logStartLine();
         if (playwright != null) {
             LoggerUtils.logInfo("Playwright created");
         } else {
@@ -73,6 +74,7 @@ public abstract class BaseTest {
             playwright.close();
             LoggerUtils.logInfo("Playwright closed.");
         }
+        ReportUtils.logLine();
     }
 
     private boolean isOnHomePage() {
