@@ -11,7 +11,7 @@ public final class LoggerUtils {
     private static final String WARNING = "⚠️";
     private static final String EXCEPTION = "❗";
 
-    private static final Logger logger = LogManager.getLogger(BaseTest.class.getSimpleName());
+    private static final Logger logger = LogManager.getLogger(LoggerUtils.class.getSimpleName());
 
     public static void logInfo(String message) {
         logger.info(message);
