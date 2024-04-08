@@ -1,6 +1,9 @@
 package your_store.runner;
 
 import com.microsoft.playwright.*;
+import java.lang.reflect.Method;
+
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import your_store.utils.BrowserManager;
 import your_store.utils.ConfigProperties;
@@ -19,7 +22,7 @@ public abstract class BaseTest {
 
     @BeforeSuite
     protected void checkIfPlaywrightCreatedAndBrowserLaunched() {
-        ReportUtils.logStartLine();
+        ReportUtils.logReportHeader();
         if (playwright != null) {
             LoggerUtils.logInfo("Playwright created");
         } else {
@@ -36,7 +39,9 @@ public abstract class BaseTest {
     }
 
     @BeforeMethod
-    protected void createContextAndPage() {
+    protected void createContextAndPage(Method method) {
+        ReportUtils.logTestName(method);
+
         context = browser.newContext();
         LoggerUtils.logInfo("Context created.");
 
@@ -53,7 +58,7 @@ public abstract class BaseTest {
     }
 
     @AfterMethod
-    protected void closeContext() {
+    protected void closeContext(Method method, ITestResult result) {
         if (page != null) {
             page.close();
             LoggerUtils.logInfo("Page closed.");
@@ -62,6 +67,7 @@ public abstract class BaseTest {
             context.close();
             LoggerUtils.logInfo("Context closed.");
         }
+        ReportUtils.logTestResult(method, result);
     }
 
     @AfterSuite
@@ -74,7 +80,7 @@ public abstract class BaseTest {
             playwright.close();
             LoggerUtils.logInfo("Playwright closed.");
         }
-        ReportUtils.logLine();
+//        ReportUtils.getLine();
     }
 
     private boolean isOnHomePage() {

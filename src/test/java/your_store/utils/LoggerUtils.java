@@ -6,10 +6,10 @@ import your_store.runner.BaseTest;
 
 public final class LoggerUtils {
 
-    private static final String ERROR = "❌\n";
-    private static final String SUCCESS = "✅";
-    private static final String WARNING = "⚠️";
-    private static final String EXCEPTION = "❗";
+    public static final String ERROR = "❌\n";
+    public static final String SUCCESS = "✅";
+    public static final String WARNING = "⚠️";
+    public static final String EXCEPTION = "❗";
 
     private static final Logger logger = LogManager.getLogger(LoggerUtils.class.getSimpleName());
 
