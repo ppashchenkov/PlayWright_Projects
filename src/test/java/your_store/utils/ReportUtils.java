@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.testng.ITestResult;
+
 public class ReportUtils {
 
 //    private static final String LINE = "*".repeat(70);

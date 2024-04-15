@@ -3,6 +3,7 @@ package your_store.runner;
 import com.microsoft.playwright.*;
 import java.lang.reflect.Method;
 
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import your_store.utils.BrowserManager;
@@ -32,30 +33,34 @@ public abstract class BaseTest {
         }
     }
 
-//    @BeforeClass
-//    protected void launchBrowser() {
-//        browser = BrowserManager.createBrowser(playwright, ConfigProperties.ENVIROMENT_CHROMIUM);
-//
-//        if (browser.isConnected()) {
-//            LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
-//        } else {
-//            LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
-//            System.exit(1); // выходим из системы с кодом ошибки 1
-//        }
-//    }
-
-        @Parameters({"browserOption", "isHeadless", "slowMo"})
-        @BeforeClass
-        protected void launchBrowser(String browserOption, String isHeadless, String slowMo) {
+    @Parameters({"browserOption", "isHeadless", "slowMo"})
+    @BeforeClass
+    protected void launchBrowserXml(ITestContext context, String browserOption, String isHeadless, String slowMo) {
+        if (context.getCurrentXmlTest().getSuite().getName().substring(0,3).equals("XML")) {
             browser = BrowserManager.createBrowser(playwright, browserOption, isHeadless, slowMo);
-
-                if (browser.isConnected()) {
-                        LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
-                } else {
-                        LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
-                        System.exit(1); // выходим из системы с кодом ошибки 1
-                }
+            LoggerUtils.logInfo("SuiteName = " + context.getCurrentXmlTest().getSuite().getName().substring(0, 3));
+            if (browser.isConnected()) {
+                LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
+            } else {
+                LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
+                System.exit(1); // выходим из системы с кодом ошибки 1
+            }
         }
+    }
+
+    @BeforeClass
+    protected void launchBrowser(ITestContext context) {
+        if (!context.getCurrentXmlTest().getSuite().getName().substring(0, 3).equals("XML")) {
+            browser = BrowserManager.createBrowser(playwright, ConfigProperties.ENVIROMENT_CHROMIUM);
+            LoggerUtils.logInfo("SuiteName = " + context.getCurrentXmlTest().getSuite().getName().substring(0, 3));
+            if (browser.isConnected()) {
+                LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
+            } else {
+                LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
+                System.exit(1); // выходим из системы с кодом ошибки 1
+            }
+        }
+    }
 
     @BeforeMethod
     protected void createContextAndPage(Method method) {

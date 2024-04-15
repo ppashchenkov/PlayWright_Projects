@@ -2,6 +2,7 @@ package your_store.utils;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.ITestResult;
 import your_store.runner.BaseTest;
 
 public final class LoggerUtils {
@@ -32,4 +33,5 @@ public final class LoggerUtils {
     public static void logSuccess(String message) {
         logger.warn(SUCCESS + message);
     }
+
 }
