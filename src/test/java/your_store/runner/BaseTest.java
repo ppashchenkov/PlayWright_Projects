@@ -105,7 +105,7 @@ public abstract class BaseTest {
             playwright.close();
             LoggerUtils.logInfo("Playwright closed.");
         }
-//        ReportUtils.getLine();
+        ReportUtils.getLine();
     }
 
     private boolean isOnHomePage() {
