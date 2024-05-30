@@ -15,28 +15,28 @@ public final class BrowserManager {
 
         switch (browserName) {
             case "chromium" -> {
-//                LoggerUtils.logInfo("INFO: " + browserName + " launched.");
+                LoggerUtils.logInfo("INFO: " + browserName + " launched.");
                 return playwright.chromium()
                         .launch(new BrowserType.LaunchOptions()
                                 .setHeadless(isHeadLess)
                                 .setSlowMo(slowMo));
             }
             case "firefox" -> {
-//                LoggerUtils.logInfo("INFO: " + browserName + " launched.");
+                LoggerUtils.logInfo("INFO: " + browserName + " launched.");
                 return playwright.firefox()
                         .launch(new BrowserType.LaunchOptions()
                                 .setHeadless(isHeadLess)
                                 .setSlowMo(slowMo));
             }
             case "webkit" -> {
-//                LoggerUtils.logInfo("INFO: " + browserName + " launched.");
+                LoggerUtils.logInfo("INFO: " + browserName + " launched.");
                 return playwright.webkit()
                         .launch(new BrowserType.LaunchOptions()
                                 .setHeadless(isHeadLess)
                                 .setSlowMo(slowMo));
             }
             default -> {
-//                LoggerUtils.logError("Error: " + browserName + " is NOT match any options. Cromium() launched.");
+                LoggerUtils.logError("Error: " + browserName + " is NOT match any options. Cromium() launched.");
                 return playwright.chromium()
                         .launch(new BrowserType.LaunchOptions()
                                 .setHeadless(true)
