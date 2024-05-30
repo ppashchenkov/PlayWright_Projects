@@ -32,30 +32,30 @@ public abstract class BaseTest {
         }
     }
 
-//    @BeforeClass
-//    protected void launchBrowser() {
-//        browser = BrowserManager.createBrowser(playwright, ConfigProperties.ENVIROMENT_CHROMIUM);
-//
-//        if (browser.isConnected()) {
-//            LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
-//        } else {
-//            LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
-//            System.exit(1); // выходим из системы с кодом ошибки 1
-//        }
-//    }
+    @BeforeClass
+    protected void launchBrowser() {
+        browser = BrowserManager.createBrowser(playwright, ConfigProperties.ENVIROMENT_CHROMIUM);
 
-        @Parameters({"browserOption", "isHeadless", "slowMo"})
-        @BeforeClass
-        protected void launchBrowser(String browserOption, String isHeadless, String slowMo) {
-            browser = BrowserManager.createBrowser(playwright, browserOption, isHeadless, slowMo);
-
-                if (browser.isConnected()) {
-                        LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
-                } else {
-                        LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
-                        System.exit(1); // выходим из системы с кодом ошибки 1
-                }
+        if (browser.isConnected()) {
+            LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
+        } else {
+            LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
+            System.exit(1); // выходим из системы с кодом ошибки 1
         }
+    }
+
+//        @Parameters({"browserOption", "isHeadless", "slowMo"})
+//        @BeforeClass
+//        protected void launchBrowser(String browserOption, String isHeadless, String slowMo) {
+//            browser = BrowserManager.createBrowser(playwright, browserOption, isHeadless, slowMo);
+//
+//                if (browser.isConnected()) {
+//                        LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
+//                } else {
+//                        LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
+//                        System.exit(1); // выходим из системы с кодом ошибки 1
+//                }
+//        }
 
     @BeforeMethod
     protected void createContextAndPage(Method method) {
