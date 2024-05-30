@@ -32,4 +32,5 @@ public final class LoggerUtils {
     public static void logSuccess(String message) {
         logger.warn(SUCCESS + message);
     }
+
 }
