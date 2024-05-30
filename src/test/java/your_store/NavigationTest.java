@@ -70,16 +70,4 @@ public class NavigationTest extends BaseTest {
 
         Assert.assertTrue(true);
     }
-
-//    @Test
-//    public void testMp3PlayersMenu() {
-//        if (getIsOnHomePage()) {
-//            getPage().getByRole(AriaRole.LINK, new Page.GetByRoleOptions()
-//                    .setName(MP3PLAYERS_MENU).setExact(true)).click();
-//
-//            assertThat(getPage())
-//                    .hasURL(BASE_URL + MP3PLAYERS_END_POINT);
-//        }
-//    }
-
 }

@@ -30,7 +30,7 @@ public class ConfigProperties {
     private static Map<String, String> setEnviroment(String browser, String isHeadLess, String slowMo) {
         Map<String, String> enviroment = new HashMap<>();
 
-//        LoggerUtils.logInfo("properties = " + properties.toString());
+        LoggerUtils.logInfo("properties = " + properties.toString());
 
         if(properties != null && !properties.isEmpty()
                 && !properties.getProperty(browser).trim().isEmpty()
