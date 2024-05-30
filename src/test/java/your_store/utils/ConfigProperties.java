@@ -21,7 +21,7 @@ public class ConfigProperties {
             properties.load(configFile);
         } catch (IOException e) {
             LoggerUtils.logError("ERROR: 'config.properties' file Not FOUND OR file is EMPTY or file is CORRUPT" );
-//            System.exit(1);
+            System.exit(1);
         }
 
         return properties;

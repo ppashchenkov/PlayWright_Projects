@@ -16,7 +16,8 @@ import static your_store.utils.TestData.HOME_END_POINT;
 public abstract class BaseTest {
 
     private final Playwright playwright = Playwright.create();
-    private final Browser browser = BrowserManager.createBrowser(playwright, ConfigProperties.ENVIROMENT_CHROMIUM);
+    private Browser browser;
+//    = BrowserManager.createBrowser(playwright, ConfigProperties.ENVIROMENT_CHROMIUM);
     private BrowserContext context;
     private Page page;
 
@@ -29,14 +30,32 @@ public abstract class BaseTest {
             LoggerUtils.logFatal("FATAL. Playwright is NOT created.");
             System.exit(1);
         }
-
-        if (browser.isConnected()) {
-            LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
-        } else {
-            LoggerUtils.logFatal("FATAL. Browser is NOT connected.");
-            System.exit(1);
-        }
     }
+
+//    @BeforeClass
+//    protected void launchBrowser() {
+//        browser = BrowserManager.createBrowser(playwright, ConfigProperties.ENVIROMENT_CHROMIUM);
+//
+//        if (browser.isConnected()) {
+//            LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
+//        } else {
+//            LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
+//            System.exit(1); // выходим из системы с кодом ошибки 1
+//        }
+//    }
+
+        @Parameters({"browserOption", "isHeadless", "slowMo"})
+        @BeforeClass
+        protected void launchBrowser(String browserOption, String isHeadless, String slowMo) {
+            browser = BrowserManager.createBrowser(playwright, browserOption, isHeadless, slowMo);
+
+                if (browser.isConnected()) {
+                        LoggerUtils.logInfo("Browser " + browser.browserType().name() + " is connected.");
+                } else {
+                        LoggerUtils.logFatal("FATAL: Browser is NOT connected.");
+                        System.exit(1); // выходим из системы с кодом ошибки 1
+                }
+        }
 
     @BeforeMethod
     protected void createContextAndPage(Method method) {
@@ -70,12 +89,18 @@ public abstract class BaseTest {
         ReportUtils.logTestResult(method, result);
     }
 
+    @AfterClass
+    protected void closeBrowser() {
+        if (browser != null && browser.isConnected()) {
+            browser.close();
+            if(!browser.isConnected()) {
+                LoggerUtils.logInfo("Browser is closed");
+            }
+        }
+    }
+
     @AfterSuite
     protected void closeBrowserAndPlaywright() {
-        if (browser != null){
-            browser.close();
-            LoggerUtils.logSuccess("Browser " + browser.browserType().name() + " is closed.");
-        }
         if (playwright != null) {
             playwright.close();
             LoggerUtils.logInfo("Playwright closed.");
